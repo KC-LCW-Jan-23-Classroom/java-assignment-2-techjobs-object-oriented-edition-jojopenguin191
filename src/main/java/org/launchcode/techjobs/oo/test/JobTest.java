@@ -81,4 +81,43 @@ public class JobTest {
         assertEquals("\n", Character.toString(firstChar));
         assertEquals("\n", Character.toString(lastChar));
     }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        // Create a Job object with specific values
+        Job job = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        // Test that toString contains correct labels and data
+        String expectedOutput = "\n" +
+                "ID: _____\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n" +
+                "\n";
+        assertEquals(expectedOutput, job.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        // Create a Job object with empty name
+        Job job = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        // Test that toString handles empty field
+        String expectedOutput = "\n" +
+                "ID: _____\n" +
+                "Name: Data not available\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n" +
+                "\n";
+        assertEquals(expectedOutput, job.toString());
+    }
+
 }

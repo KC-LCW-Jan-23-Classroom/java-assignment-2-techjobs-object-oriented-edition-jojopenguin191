@@ -96,14 +96,27 @@ public class Job {
     }
 
 
-//    @Override
-//    public String toString() {
-//        this.name = getName();
-//        this.employer = getEmployer();
-//        this.location = getLocation();
-//        this.positionType = getPositionType();
-//        this.coreCompetency = getCoreCompetency();
-//    }
+    @Override
+    public String toString() {
+        String returnString = "\n" +
+                "ID: " + id + "\n";
+
+        try {
+            String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
+            String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
+            for (int i = 0; i < fieldNames.length; i++) {
+                returnString += fieldNames[i];
+                if (fields[i].equals("") || fields[i].equals(null)) {
+                    returnString += "Data not available\n";
+                } else {
+                    returnString += fields[i] + "\n";
+                }
+            }
+        } catch (NullPointerException e) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        return returnString;
+    }
 }
 
 
