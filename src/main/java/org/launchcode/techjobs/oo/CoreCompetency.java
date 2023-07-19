@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class CoreCompetency extends JobField {
 
+    public CoreCompetency(String value) {
+        super(value);
+    }
+
 //    private int id;
 //    private static int nextId = 1;
 //    private String value;
@@ -29,8 +33,8 @@ public class CoreCompetency extends JobField {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CoreCompetency)) return false;
-        CoreCompetency coreCompetency = (CoreCompetency) o;
-        return getId() == coreCompetency.getId();
+        CoreCompetency that = (CoreCompetency) o;
+        return getId() == that.getId();
     }
 
 //    @Override
@@ -53,7 +57,4 @@ public class CoreCompetency extends JobField {
 //        return id;
 //    }
 
-    public CoreCompetency(String value) {
-        super(value);
-    }
 }

@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class Location extends JobField {
 
+    public Location(String value) {
+        super(value);
+    }
+
 //    private int id;
 //    private static int nextId = 1;
 //    private String value;
@@ -32,8 +36,8 @@ public class Location extends JobField {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Location)) return false;
-        Location location = (Location) o;
-        return getId() == location.getId();
+        Location that = (Location) o;
+        return getId() == that.getId();
     }
 
 //    @Override
@@ -55,7 +59,4 @@ public class Location extends JobField {
 //        this.value = value;
 //    }
 
-    public Location(String value) {
-        super(value);
-    }
 }

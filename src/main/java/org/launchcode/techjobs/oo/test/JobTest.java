@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 @RunWith(JUnit4.class)
 public class JobTest {
     @Test
+    //test 1
     public void testSettingJobId() {
         //create Job objects
         Job job1 = new Job();
@@ -24,6 +25,7 @@ public class JobTest {
     }
 
     @Test
+    // test 2
     public void testJobConstructorSetsAllFields() {
         //declare & initialize Job object
         Job job = new Job("Product tester",
@@ -39,7 +41,7 @@ public class JobTest {
         assertTrue(job.getPositionType() instanceof PositionType);
         assertTrue(job.getCoreCompetency() instanceof CoreCompetency);
 
-        assertEquals(job.getName(),"Product Tester");
+        assertEquals(job.getName(),"Product tester");
         assertEquals(job.getEmployer().getValue(), "ACME");
         assertEquals(job.getLocation().getValue(), "Desert");
         assertEquals(job.getPositionType().getValue(), "Quality control");
@@ -47,6 +49,7 @@ public class JobTest {
     }
 
     @Test
+    // test 3
     public void testJobsForEquality() {
         // two Job objects with same fields
         Job job1 = new Job("Product tester",
@@ -66,6 +69,7 @@ public class JobTest {
     }
 
     @Test
+    // test 4
     public void testToStringStartsAndEndsWithNewLine() {
         // job object
         Job job = new Job("Product tester",
@@ -83,6 +87,7 @@ public class JobTest {
     }
 
     @Test
+    // test 5
     public void testToStringContainsCorrectLabelsAndData() {
         // Create a Job object with specific values
         Job job = new Job("Product tester",
@@ -118,6 +123,7 @@ public class JobTest {
                 "Core Competency: Persistence\n" +
                 "\n";
         assertEquals(expectedOutput, job.toString());
+        assertEquals("OOPS! This job does not seem to exist.", job.toString());
     }
 
 }
