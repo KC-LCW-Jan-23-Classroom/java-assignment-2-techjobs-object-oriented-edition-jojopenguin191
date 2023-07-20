@@ -97,7 +97,7 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
 
         // Test that toString contains correct labels and data
-        String expectedOutput = "\n" +
+        String jobExpectedString = "\n" +
                 "ID: _____\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
@@ -105,16 +105,17 @@ public class JobTest {
                 "Position Type: Quality control\n" +
                 "Core Competency: Persistence\n" +
                 "\n";
-        assertEquals(expectedOutput, job.toString());
+        assertEquals(jobExpectedString, job.toString());
     }
 
     @Test
+    // test 6
     public void testToStringHandlesEmptyField() {
         // Create a Job object with empty name
         Job job = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
         // Test that toString handles empty field
-        String expectedOutput = "\n" +
+        String jobExpectedString = "\n" +
                 "ID: _____\n" +
                 "Name: Data not available\n" +
                 "Employer: ACME\n" +
@@ -122,7 +123,7 @@ public class JobTest {
                 "Position Type: Quality control\n" +
                 "Core Competency: Persistence\n" +
                 "\n";
-        assertEquals(expectedOutput, job.toString());
+        assertEquals(jobExpectedString, job.toString());
         assertEquals("OOPS! This job does not seem to exist.", job.toString());
     }
 
