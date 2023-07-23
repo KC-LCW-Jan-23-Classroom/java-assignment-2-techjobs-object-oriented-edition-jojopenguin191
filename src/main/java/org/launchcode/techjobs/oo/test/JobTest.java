@@ -35,7 +35,7 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
 
         //test that constructor assigns correct class & value for each field
-        assertTrue(job.getName() instanceof String);
+        assertTrue(job instanceof Job);
         assertTrue(job.getEmployer() instanceof Employer);
         assertTrue(job.getLocation() instanceof Location);
         assertTrue(job.getPositionType() instanceof PositionType);
@@ -77,13 +77,15 @@ public class JobTest {
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
+        assertEquals('\n', job.toString().charAt(0));
+        assertEquals('\n', job.toString().charAt(job.toString().length() - 1));
 
-        String stringJob = job.toString();
-        char firstChar = stringJob.charAt(0);
-        char lastChar = stringJob.charAt(stringJob.length() - 1);
-
-        assertEquals("\n", Character.toString(firstChar));
-        assertEquals("\n", Character.toString(lastChar));
+//        String stringJob = job.toString();
+//        char firstChar = stringJob.charAt(0);
+//        char lastChar = stringJob.charAt(stringJob.length() - 1);
+//
+//        assertEquals("\n", Character.toString(firstChar));
+//        assertEquals("\n", Character.toString(lastChar));
     }
 
     @Test
@@ -96,35 +98,42 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
 
-        // Test that toString contains correct labels and data
-        String jobExpectedString = "\n" +
-                "ID: _____\n" +
-                "Name: Product tester\n" +
-                "Employer: ACME\n" +
-                "Location: Desert\n" +
-                "Position Type: Quality control\n" +
-                "Core Competency: Persistence\n" +
-                "\n";
-        assertEquals(jobExpectedString, job.toString());
+        assertEquals('\n' +
+                "ID: " + job.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence" +
+                '\n', job.toString());
     }
 
     @Test
     // test 6
     public void testToStringHandlesEmptyField() {
         // Create a Job object with empty name
-        Job job = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job = new Job("", new Employer(""), new Location("Desert"), new PositionType(""), new CoreCompetency(""));
+
+        assertEquals('\n' +
+                "ID: " + job.getId() +
+                "\nName: Data not available" +
+                "\nEmployer: Data not available" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Data not available" +
+                "\nCore Competency: Data not available" +
+                '\n', job.toString());
 
         // Test that toString handles empty field
-        String jobExpectedString = "\n" +
-                "ID: _____\n" +
-                "Name: Data not available\n" +
-                "Employer: ACME\n" +
-                "Location: Desert\n" +
-                "Position Type: Quality control\n" +
-                "Core Competency: Persistence\n" +
-                "\n";
-        assertEquals(jobExpectedString, job.toString());
-        assertEquals("OOPS! This job does not seem to exist.", job.toString());
+//        String jobExpectedString = "\n" +
+//                "ID: _____\n" +
+//                "Name: Data not available\n" +
+//                "Employer: ACME\n" +
+//                "Location: Desert\n" +
+//                "Position Type: Quality control\n" +
+//                "Core Competency: Persistence\n" +
+//                "\n";
+//        assertEquals(jobExpectedString, job.toString());
+//        assertEquals("OOPS! This job does not seem to exist.", job.toString());
     }
 
 }

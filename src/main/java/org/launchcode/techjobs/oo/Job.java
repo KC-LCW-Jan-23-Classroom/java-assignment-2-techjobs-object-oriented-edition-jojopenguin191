@@ -98,24 +98,34 @@ public class Job {
 
     @Override
     public String toString() {
-        String returnString = "\n" +
-                "ID: " + id + "\n";
 
-        try {
-            String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
-            String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
-            for (int i = 0; i < fieldNames.length; i++) {
-                returnString += fieldNames[i];
-                if (fields[i].equals("") || fields[i].equals(null)) {
-                    returnString += "Data not available\n";
-                } else {
-                    returnString += fields[i] + "\n";
-                }
-            }
-        } catch (NullPointerException e) {
-            return "OOPS! This job does not seem to exist.";
-        }
-        return returnString;
+        return ("\n" +
+                "ID: " + (this.getId() + "\n" +
+                "Name: " + (this.getName().toString().isEmpty() ? "Data not available" : this.getName()) + "\n" +
+                "Employer: " + (this.getEmployer().toString().isEmpty() ? "Data not available" : this.getEmployer()) + "\n" +
+                "Location: " + (this.getLocation().toString().isEmpty() ? "Data not available" : this.getLocation()) + "\n" +
+                "Position Type: " + (this.getPositionType().toString().isEmpty() ? "Data not available" : this.getPositionType()) + "\n" +
+                "Core Competency: " + (this.getCoreCompetency().toString().isEmpty() ? "Data not available" : this.getCoreCompetency()) + "\n"));
+//    public String toString() {
+//        String returnString = "\n" +
+//                "ID: " + id + "\n";
+//
+//        try {
+//            String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
+//            String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
+//            for (int i = 0; i < fieldNames.length; i++) {
+//                returnString += fieldNames[i];
+//                if (fields[i].equals("") || fields[i].equals(null)) {
+//                    returnString += "Data not available\n";
+//                } else {
+//                    returnString += fields[i] + "\n";
+//                }
+//            }
+//        } catch (NullPointerException e) {
+//            return "OOPS! This job does not seem to exist.";
+//        }
+//        return returnString;
+//    }
     }
 }
 
